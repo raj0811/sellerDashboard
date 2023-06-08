@@ -1,0 +1,30 @@
+.main, .store-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.store-details{
+    margin-top: 5%;
+    font-size: 2rem;
+}
+.store-details form{
+   display: flex;
+   flex-direction: column;
+   width: 50%;
+}
+
+.store-details form input,textarea{
+    width: 90%;
+    height: 5vh;
+    margin: 0.5%;
+}
+.store-details form textarea{
+    height: 10vh;
+}
+
+.store-details form button{
+    height: 5vh;
+    width: 20%;
+}

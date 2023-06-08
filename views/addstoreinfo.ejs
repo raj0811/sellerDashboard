@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/addinfo.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Add your Sore Details here</h1>
+        <div class="store-details">
+            <form action="/addstore" method="post"  enctype="multipart/form-data">
+                <textarea name="address" id="" placeholder="Address" cols="30" rows="10"></textarea>
+                <input type="text" name="gst" placeholder="Enter GST Number">
+                <div class="img-add">
+                    <label for="image">Logo:</label>
+                    <input type="file" id="image" name="image">
+                </div>
+                <div class="timing">
+                    <input type="time" name="openingTime" placeholder="Opening Time">
+                <input type="time" name="closingTime" placeholder="Closing Time">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

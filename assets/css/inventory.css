@@ -1,0 +1,29 @@
+.main, .add-inv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.add-inv{
+    margin-top: 5%;
+    font-size: 2rem;
+}
+.add-inv form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    /* background-color: aqua; */
+ }
+
+ .add-inv form input{
+    width: 90%;
+    margin: 0.5%;
+    height: 5vh;
+ }
+ .add-inv form button{
+    height: 5vh;
+    width: 20%;
+    margin: 0.5%;
+    margin-top: 2%;
+ }

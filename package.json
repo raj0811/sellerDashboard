@@ -1,0 +1,32 @@
+{
+  "name": "divisha-technologies-backend-assessment",
+  "version": "1.0.0",
+  "description": "seller regitration and dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "raj",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cloudinary": "^1.37.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.0.0",
+    "connect-mongodb-session": "^3.1.1",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
+    "mongoose": "^7.2.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.22",
+    "noty": "^3.2.0-beta-deprecated",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  }
+}

@@ -1,0 +1,57 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+}
+
+.data-container{
+    display: flex;
+    justify-content: space-evenly;
+    height: 70vh;
+    width: 70%;
+    border: 1px solid black;
+    margin-top: 7%;
+    
+}
+
+.login, .login-form, .sign-up, .signup-form,.login-header{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.login-header .logo-login{
+    height: 5vh;
+    width: 5vh;
+}
+.logo-login img{
+    height: 100%;
+    width: 100%;
+}
+.login, .sign-up{
+    width: 45%;
+    /* background-color: aquamarine; */
+    align-items: center;
+}
+
+.login-form, .signup-form{
+    width: 90%;
+}
+
+.login-form{
+    /* background-color: blue; */
+    height: 70%;
+
+}
+
+form input{
+    height: 5vh;
+    margin: 0.5%;
+    font-size: 2rem;
+}
+form button{
+    height: 5vh;
+    width: 20%;
+    margin: 0.5%;
+}

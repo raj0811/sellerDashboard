@@ -1,0 +1,25 @@
+.main, .seller-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    border-bottom: 1px solid black;
+    margin-top: 2%;
+}
+
+.action-links{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    font-size: 2rem;
+}
+.action-links a{
+    text-decoration: none;
+    margin: 0.5%;
+}
