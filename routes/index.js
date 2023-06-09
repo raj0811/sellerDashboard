@@ -26,5 +26,10 @@ router.get('/add-inventory',passport.checkAuthentication,homeController.renderIn
 
 router.post('/insert-inventory',upload.single('image'),homeController.insertInventory)
 
+router.get('/search/:sellerId',homeController.searchPage);
+
+router.post('/searchProduct/:sellerId',homeController.searchResult)
+
+router.get('/signout',homeController.destroySession)
 
 module.exports = router; 

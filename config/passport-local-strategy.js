@@ -20,6 +20,7 @@ async function(email, password, done) {
 
         if (!user) {
             console.log("invalid username or password");
+            // req.flash('error', 'invalid username or password');
             return done(null, false);
         }
 

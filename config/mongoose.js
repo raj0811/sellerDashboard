@@ -1,6 +1,8 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/sellerdashboard')
+// mongoose.connect('mongodb://localhost/sellerdashboard')
+mongoose.connect(process.env.MONGO_DB_URL)
 
 //accuire the connectiontion
 const db = mongoose.connection;

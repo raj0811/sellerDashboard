@@ -24,7 +24,15 @@
     height: 10vh;
 }
 
-.store-details form button{
+
+
+.add-btn{
+    background-color: rgb(70, 255, 70);
+    box-shadow: 0px 5px 22px 0px rgb(3, 1, 19);
+    display: flex;
     height: 5vh;
-    width: 20%;
+    width: 25%;
+    justify-content: space-evenly;
+    border: none;
+    margin-top: 3%;
 }

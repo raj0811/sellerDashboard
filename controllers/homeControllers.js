@@ -5,17 +5,33 @@ const fs = require('fs-extra');
 const Inventory = require("../models/inventory");
 
 
+
 module.exports.Home = (req, res) => {
-    return res.render('home', {
-        title: 'Home'
-    })
+
+    try {
+        //  if user is already logged in it will redirect to dashboard
+        if (req.isAuthenticated()) {
+            return res.redirect('/dashboard')
+
+        }
+        return res.render('home', {
+            title: 'Home'
+        })
+    } catch (err) {
+        console.log(err);
+    }
+
 }
 
-
+// create account
 module.exports.create = async function (req, res) {
     try {
+
+        console.log(req.body.email);
+
+
         if (req.body.password != req.body.confirmPassword) {
-            // console.log("paword miss matched")
+
             req.flash('error', 'Pasword Missmatched');
             return res.redirect('back');
         }
@@ -39,16 +55,25 @@ module.exports.create = async function (req, res) {
     }
 }
 
-
+// login
 module.exports.createSession = function (req, res) {
-    req.flash('success', 'Logged in');
-    return res.redirect('/dashboard')
+    try {
+
+        req.flash('success', 'Logged in');
+        return res.redirect('/dashboard')
+    } catch (err) {
+
+        console.log(err);
+    }
 }
 
 module.exports.renderDahboard = async (req, res) => {
-    req.flash('success', 'Logged in');
+    // req.flash('success', 'Logged in');
+    const userId = req.user._id
     return res.render('dashboard', {
-        title: "dashboard"
+        title: "dashboard",
+        userId
+
     })
 }
 
@@ -101,7 +126,7 @@ module.exports.addShopdeails = async (req, res) => {
 
         const folderPath = 'public/images';
         await fs.emptyDir(folderPath);
-        // Redirect or send a response as needed
+
         req.flash('success', 'Added');
         res.redirect('/dashboard');
     } catch (err) {
@@ -123,8 +148,12 @@ module.exports.insertCategory = async (req, res) => {
         console.log(req.user._id);
         // Find the existing document in the database
         const shop = await Shop.findOne({ user: req.user._id });
+        if (!shop) {
+            req.flash('error', 'add shop details first');
+            return res.redirect('/add-info')
+        }
         console.log(shop);
-        //   // Update the category and subcategory fields
+        // Update the category and subcategory fields
         shop.category = category;
         shop.subCategory = subcategory;
 
@@ -148,24 +177,28 @@ module.exports.renderInventory = async (req, res) => {
 
 
 module.exports.insertInventory = async (req, res) => {
-
     try {
-        const { productName, category, subcategory, mrp, sellingPrice, quantity } = req.body
-        
+        const { productName, category, subcategory, mrp, sellingPrice, quantity } = req.body;
+
+        // Convert inputs to lowercase
+        const lowerCaseProductName = productName.toLowerCase();
+        const lowerCaseCategory = category.toLowerCase();
+        const lowerCaseSubcategory = subcategory.toLowerCase();
+
         if (!req.file) {
             return res.status(400).json({ error: 'Please upload an image' });
         }
-        
+
         const imageFile = req.file;
-        
+
         // Upload the image file to Cloudinary
         const result = await cloudinary.uploader.upload(imageFile.path);
-        
-        const userId = req.user._id
+
+        const userId = req.user._id;
         const newProduct = new Inventory({
-            productName,
-            category,
-            subcategory,
+            productName: lowerCaseProductName,
+            category: lowerCaseCategory,
+            subcategory: lowerCaseSubcategory,
             mrp,
             sellingPrice,
             quantity,
@@ -184,5 +217,73 @@ module.exports.insertInventory = async (req, res) => {
     } catch (err) {
         console.log(err);
     }
+};
+
+
+
+
+module.exports.searchPage = async (req, res) => {
+    try {
+
+
+        const userId = req.params.sellerId
+        console.log(userId);
+
+        const seller = await Seller.findById(userId)
+
+
+        console.log(seller._id);
+        // console.log(seller.businessName);
+        return res.render('searchpage', {
+            title: "Search",
+            seller,
+        })
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+module.exports.searchResult = async (req, res) => {
+    try {
+        const sellerId = req.params.sellerId;
+        const search = req.body.searchedItem;
+        console.log(search);
+
+        const searchItem = search.toLowerCase();
+
+        const product = await Inventory.find({
+            user: sellerId,
+            $or: [
+                { productName: { $regex: searchItem, $options: 'i' } },
+                { category: { $regex: searchItem, $options: 'i' } },
+                { subcategory: { $regex: searchItem, $options: 'i' } }
+            ]
+        });
+
+        // console.log(product);
+
+        // console.log(sellerId);
+
+        const userId = req.params.sellerId;
+        const seller = await Seller.findById(userId);
+
+        res.render('searchpage', { title: 'searchresult', seller, product });
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+
+module.exports.destroySession = function (req, res, next) {
+    req.logout(function (err) {
+        if (err) {
+            return next(err);
+        }
+        req.flash('error', 'Logged out');
+        res.redirect('/')
+
+    });
 
 }

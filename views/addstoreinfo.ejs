@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="/css/addinfo.css">
 </head>
 <body>
+
+    <%- include('_header.ejs') %>
     <div class="main">
-        <h1>Add your Sore Details here</h1>
         <div class="store-details">
+            <h1>Add your Store Details here</h1>
             <form action="/addstore" method="post"  enctype="multipart/form-data">
                 <textarea name="address" id="" placeholder="Address" cols="30" rows="10"></textarea>
                 <input type="text" name="gst" placeholder="Enter GST Number">
@@ -21,7 +23,7 @@
                     <input type="time" name="openingTime" placeholder="Opening Time">
                 <input type="time" name="closingTime" placeholder="Closing Time">
                 </div>
-                <button type="submit">Submit</button>
+                <button class="add-btn" type="submit">Submit <i class="fa-sharp fa-solid fa-floppy-disk-circle-arrow-right"></i></button>
             </form>
         </div>
     </div>

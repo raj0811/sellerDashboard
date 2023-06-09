@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/searchpage.css">
+</head>
+<body>
+    <div class="main">
+        <div class="search">
+            <h1>Seller Name : <%= seller.businessName %> </h1>
+            <form action="/searchProduct/<%=seller._id%>" method="post">
+                <input class="src-bar" type="search" name="searchedItem" placeholder="Search Product Here">
+                <button class="src-btn" type="submit">
+                    <img src="https://cdn-icons-png.flaticon.com/128/954/954591.png" alt="search button">
+                </button>
+            </form>
+        </div>
+
+        <div class="search-result">
+            <% if ( locals.product &&  product.length > 0) { %>
+                <% product.forEach((item) => { %>
+            <div class="result-bar">
+                <div class="img">
+                    <img src="<%= item.image %>" alt="product image">
+                </div>
+                <div class="data">
+                    <h1><%= item.productName %></h1>
+                    <h2><%= item.sellingPrice %></h2>
+                    <div class="cat">
+                        <span><%= item.category %></span>
+                        <span><%= item.subcategory %></span>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+
+            <% } else { %>
+                <div class="no-results">
+                    <p>No results found.</p>
+                </div>
+            <% } %>
+        </div>
+
+
+    </div>
+</body>
+</html>

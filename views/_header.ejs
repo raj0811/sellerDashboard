@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="/css/nav.css">
+<div class="navbar">
+    <div class="navb">
+        <a href="/">Home</a>
+        <% if(locals.user) {%>
+        <h1> <%= user. businessName%> </h1>
+        <%}%>
+
+        <a href="/signout">Signout</a>
+    </div>
+</div>

@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="/css/category.css">
 </head>
 <body>
+
+    <%- include('_header.ejs') %>
     <div class="main">
         <div class="add">
             <h1>Add Category</h1>
             <form action="/insert-category" method="post">
                 <input type="text" placeholder="CATEGORY" name="category">
                 <input type="text" placeholder="SUB-CATEGORY" name="subcategory">
-                <button type="submit">Add -> </button>
+                <button type="submit">Add <i class="fa-sharp fa-solid fa-plus"></i> </button>
             </form>
         </div>
     </div>

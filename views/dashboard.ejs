@@ -9,27 +9,48 @@
 </head>
 
 <body>
-    <!-- <h1>Dashboard</h1>
-    <%=user.businessName%> -->
+
+
+    <%- include('_header.ejs') %>
 
     <div class="main">
-        <h1>Dashboard</h1>
+        <div class="dashboard">
 
-        <div class="seller-info">
 
-            <div class="header">
-                <h1>
-                    <%=user.businessName%>
-                </h1>
+            <h1>Dashboard</h1>
+            <div class="link">
+                <a class="url" href="/search/<%=userId%>"> search URL</a>
+                <span class="copy">http://localhost/search/<%=userId%></span>
+                <!-- <button id="copyButton">Copy URL</button> -->
             </div>
+            <div class="seller-info">
 
-            <div class="action-links">
-                <a href="/add-info">Add store info</a>
-                <a href="/add-category">Add Category</a>
-                <a href="/add-inventory">Add Inventory</a>
+                <div class="header">
+                    <h1>
+                        <%=user.businessName%>
+                    </h1>
+                </div>
+
+                <div class="action-links">
+                    <a href="/add-info">Add store info</a>
+                    <a href="/add-category">Add Category</a>
+                    <a href="/add-inventory">Add Inventory</a>
+                    <a href="/signout">Signout</a>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        console.log('hii');
+        const copyButton = document.querySelector('#copyButton');
+        const searchLink = document.querySelector('#searchLink');
+
+        copyButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(searchLink.href);
+        });
+    </script>
+
 </body>
 
 </html>

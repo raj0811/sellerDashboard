@@ -1,10 +1,33 @@
-.main, .seller-info{
+.main, .dashboard, .seller-info{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
+.dashboard{
+    margin-top: 3%;
+    
+}
+.link{
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    padding: 0.5%;
+    flex-direction: column;
+    
 
+}
+.url{
+    text-decoration: none;
+    font-size: 1.7rem;
+   
+
+}
+.copy{
+    font-size: 1.5rem;
+}
 .header{
     display: flex;
     justify-content: center;
