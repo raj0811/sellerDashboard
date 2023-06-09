@@ -59,7 +59,7 @@ app.use(session({
     },
     store: MongoStore.create({
 
-        mongoUrl: 'mongodb://localhost/sellerdashboard',
+        mongoUrl: 'mongodb+srv://mrunknown0086:VSMuv9zJyXlY29OR@cluster0.rhqkagp.mongodb.net/?retryWrites=true&w=majority',
         autoRemove: 'disabled'
 
     },
