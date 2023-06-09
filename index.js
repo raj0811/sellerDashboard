@@ -2,7 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
-const port = 80;
+const port = 8015;
 require('dotenv').config();
 const db=require('./config/mongoose');
 
