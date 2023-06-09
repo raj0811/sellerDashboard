@@ -2,7 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 // mongoose.connect('mongodb://localhost/sellerdashboard')
-mongoose.connect(process.env.MONGO_DB_URL)
+mongoose.connect("mongodb+srv://mrunknown0086:n8RBNbztJXIpxoaa@sellercluster.yfvfadd.mongodb.net/?retryWrites=true&w=majority")
 
 //accuire the connectiontion
 const db = mongoose.connection;
